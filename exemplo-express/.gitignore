@@ -1,0 +1,3 @@
+#sempre ignora a pasta node modulos 
+#pois ela contém codigos de terceiros
+node_modules/
