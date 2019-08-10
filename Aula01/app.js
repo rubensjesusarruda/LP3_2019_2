@@ -11,7 +11,7 @@ app.use('/inverter/:str', (req,res) =>{
     // recupera parametro de url
     let str = req.params.str;
     str = str.split('').reverse().join('');
-    res.json(str);
+    res.json({resultado: str});
 });
 
 app.use('/cpf/:cpf', (req,res) =>{
@@ -20,4 +20,4 @@ app.use('/cpf/:cpf', (req,res) =>{
     res.send('Validador de CPF')
 });
 
-app.listen(3000, ()=> console.log('servidor inicializado'));
+module.exports = app;
