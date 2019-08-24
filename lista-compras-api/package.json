@@ -2,7 +2,7 @@
   "name": "lista-compras-api",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
     "dev":"nodemon",
