@@ -13,5 +13,5 @@ app.use(cors());
  * permite o nosso app Express sonsiga interpretar dados do front end em formato JSON.
  */
 app.use(bodyParser.json());
-app.use(rotasListas);
+app.use('/listas',rotasListas);
 module.exports = app;
