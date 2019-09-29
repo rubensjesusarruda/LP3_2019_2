@@ -1,6 +1,6 @@
 const app = require('./app');
 
-const PORTA = 3001;
+const PORTA = 3002;
 
 app.listen(
     PORTA,

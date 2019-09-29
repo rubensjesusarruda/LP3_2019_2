@@ -1,11 +1,10 @@
 class Item {
-    constructor(){
+    constructor() {
         this._id = `${new Date().getMilliseconds()}`;
         this.descricao = '';
-        this.unidade='';
+        this.unidade = '';
         this.quantidade = 0;
-        }
-
+    }
 }
 
-module.exports  = Item;
+module.exports = Item;

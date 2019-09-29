@@ -1,23 +1,16 @@
 const express = require('express');
-
-// Middlewares
+const sequelize = require(sequelize);
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const rotasListas = require('./routes/listas');
+const rotasTrabalhos = require('./routes/trabalho');
 require('./databases/db');
 
 const app = express();
 
 app.use(logger('dev'));
-/**
- * Ao utilizar a função cors() sem
- * nenhum argumento, você estará
- * liberando o acesso a todos os
- * serviços para qualquer outra aplicação
- * que tenha acesso à internet.
- */
+//libera acesso aplicativos internet
 app.use(cors());
 
 /**
@@ -31,7 +24,7 @@ app.use(bodyParser.json());
  * Registra as rotas relacionadas
  * a listas
  */
-app.use('/listas', rotasListas);
+app.use('/trabalhos', rotasTrabalhos);
 
 
 module.exports = app;

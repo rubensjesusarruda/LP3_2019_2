@@ -1,24 +1,54 @@
+/**
+ * Este import é um exemplo de 
+ * associação por desestruturação
+ */
+const {Op} = re
+const { Lista, Item } = require('../databases/db');
 
-const Lista = require('../models/Lista');
-let listas = [];
 const controller = {
-    recuperarTodas: (rep, res) =>res.json(listas),
-    salvar: (req, res)=> {
-        const nome = req.body.nome;
-        /**
-        *Verifica se foi Infomado o nome da lista
-        */
-        if(nome){
-            let lista = new Lista(nome);
-            listas.push(lista);
-            res.status(201).json(lista);
-        }else{
-            res.status(400).json({mensagemErro: 'Nome da lista não informado'});
+    // Arrow function
+    recuperarTodas: async (req, res) => {
+        const listas = await Lista.findAll();
+        return res.json(listas);
+    },
+
+    salvar: (req, res) => {
+        const lista = req.body;
+
+        if (!lista.nome) {
+            return res
+                .status(400)
+                .json({ mensagem: 'Nome não informado' });
         }
+
+        Lista
+            .create(lista)
+            .then(
+                listaSalva => res.status(201).json(listaSalva),
+                erro => res.status(400).json(erro)
+            )
+            .catch(erro => {
+                console.log(erro);
+                return res
+                    .status(500)
+                    .json({ mensagem: 'Erro ao tentar salvar a lista' });
+            });
+    },
+
+    recuperarItensPorDescricao:async (req, res) =>{
+        //const consulta = req.body.consulta;
+        const {consulta} = req.body;
+        let itens = await Item.findAll({
+            whare : {
+                descricao:{
+                    [Op.iLike]:`%${consulta}%`
+                }
+            }
+        });
+        return res.json(itens);
+
     }
-    
+
 };
 
-
-module.exports= controller;
-
+module.exports = controller;
