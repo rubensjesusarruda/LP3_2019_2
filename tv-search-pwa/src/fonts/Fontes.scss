@@ -1,0 +1,19 @@
+@font-face{
+    font-family: "decorativa";
+    src: url(./Righteous-Regular.ttf);
+
+}
+@font-face{
+    font-family: "padrao";
+    src: url(./Roboto-Regular.ttf);
+
+}
+@font-face{
+    font-family: "negrito";
+    src: url(./Roboto-Bold.ttf);
+
+}
+
+$fonte-decorativa: "decorativa";
+$fonte-padrao: "padrao";
+$fonte-negrito: "negrito";
