@@ -26,6 +26,6 @@ router.post('/', listaCtrl.salvar);
  * Verbo HTTP: GET
  * 
  */
-//router.get('/itens', listaCtrl.recuperarItensPorDescricao);
+router.get('/itens', listaCtrl.recuperarItens);
 
 module.exports = router;
